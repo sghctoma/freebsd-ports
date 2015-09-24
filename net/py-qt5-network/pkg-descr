@@ -1,0 +1,5 @@
+PyQt5 is a set of Python bindings for v5 of the Qt application framework from
+the Qt Company.
+This package provides the QtNetwork module.
+
+WWW: http://www.riverbankcomputing.co.uk/software/pyqt/
