@@ -42,7 +42,7 @@ This metaport consists of the following ports:
 - QtBluetooth (**not yet available**)
 - QtDBus (**not yet available**)
 - QtDesigner (**not yet available**)
-- QtGui (**not yet available**)
+- QtGui (x11-toolkits/py-qt5-gui)
 - QtHelp (**not yet available**)
 - QtLocation (**not yet available**)
 - QtMultimedis (**not yet available**)
