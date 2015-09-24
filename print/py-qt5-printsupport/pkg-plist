@@ -1,0 +1,12 @@
+%%PYTHON_SITELIBDIR%%/PyQt5/QtPrintSupport.so
+share/py-sip/QtPrintSupport/QtPrintSupportmod.sip
+share/py-sip/QtPrintSupport/qabstractprintdialog.sip
+share/py-sip/QtPrintSupport/qpagesetupdialog.sip
+share/py-sip/QtPrintSupport/qprintdialog.sip
+share/py-sip/QtPrintSupport/qprintengine.sip
+share/py-sip/QtPrintSupport/qprinter.sip
+share/py-sip/QtPrintSupport/qprinterinfo.sip
+share/py-sip/QtPrintSupport/qprintpreviewdialog.sip
+share/py-sip/QtPrintSupport/qprintpreviewwidget.sip
+share/py-sip/QtPrintSupport/qpyprintsupport_qlist.sip
+%%API%%share/qt5/qsci/api/python/QtPrintSupport.api
