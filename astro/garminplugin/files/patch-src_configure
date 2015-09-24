@@ -1,0 +1,11 @@
+--- configure	2015-09-24 12:35:18.442869000 +0200
++++ configure	2015-09-24 12:34:49.751265000 +0200
+@@ -3838,7 +3838,7 @@
+ 	  as_fn_error $? "Unable to find tinyxml header file (tinyxml.h). Try 'apt-get install tinyxml-dev' or use --with-tinyxml-incdir=DIR" "$LINENO" 5
+ 	fi
+ 
+-	TINYXML_CFLAGS="${TINYXML_CFLAGS } -DTIXML_USE_STL"
++	TINYXML_CFLAGS="${TINYXML_CFLAGS} -DTIXML_USE_STL"
+ 
+ 	if test "x$tinyxml_libdir" != "x" ; then
+ 	  if test -f "$tinyxml_libdir/libtinyxml.so" ; then
