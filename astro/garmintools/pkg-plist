@@ -1,0 +1,16 @@
+bin/garmin_dump
+bin/garmin_gchart
+bin/garmin_get_info
+bin/garmin_gmap
+bin/garmin_gpx
+bin/garmin_save_runs
+include/garmin.h
+lib/libgarmintools.a
+lib/libgarmintools.la
+lib/libgarmintools.so
+lib/libgarmintools.so.6
+man/man1/garmin_dump.1.gz
+man/man1/garmin_get_info.1.gz
+man/man1/garmin_gmap.1.gz
+man/man1/garmin_gpx.1.gz
+man/man1/garmin_save_runs.1.gz
