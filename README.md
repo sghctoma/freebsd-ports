@@ -26,3 +26,22 @@ the device you use.
 - Other devices: Executes external command to write Gpx to device
 
 WWW: http://www.andreas-diesner.de/garminplugin
+
+audio/spuce
+-----------
+
+A rewrite of the digital filter components of SPUC with more testing, better
+code design and c++11 features.
+
+ - Uses std::complex instead of custom complex class
+ - Will focus of floating point instead of fixed-point modules
+ - Includes Chebyshev2 filter
+ - Bug fixes for odd order IIR filters
+ - Adding support for Bandpass and Bandstop designs for both IIR and FIR filter
+
+Most of spuc was written many years ago before C++ compilers had good template
+support and was primarily written for fixed-point hardware design and
+simulation.
+
+WWW: https://github.com/audiofilter/spuce
+
