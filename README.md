@@ -80,3 +80,10 @@ and Pothos.
 
 WWW: https://github.com/pothosware/SoapySDR/wiki
 
+comms/soapyrtlsdr
+-----------------
+
+The Soapy RTL-SDR project provides a plugin module to use the RTL-SDR dongle
+within the SoapySDR API and software that supports SoapySDR.
+
+WWW: https://github.com/pothosware/SoapyRTLSDR/wiki
