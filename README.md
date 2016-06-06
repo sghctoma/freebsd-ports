@@ -53,3 +53,16 @@ Matrices and more.
 
 WWW: http://beltoforion.de/article.php?a=muparserx
 
+comms/pothos
+------------
+
+The Pothos project is a complete data-flow framework for creating topologies of
+interconnected processing blocks. Topologies can be designed and tested
+graphically, and deployed over a network. The Pothos framework API is sleek and
+smart, enabling users to quickly create custom processing blocks with minimal
+boiler-plate. Processing blocks can support compuational offload and integration
+with SoC and DMA devices. The project also has a diverse set of processing and
+hardware support toolkits.
+
+WWW: http://www.pothosware.com/
+
