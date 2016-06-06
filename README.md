@@ -45,3 +45,11 @@ simulation.
 
 WWW: https://github.com/audiofilter/spuce
 
+math/muparserx
+--------------
+
+A C++ Library for Parsing Expressions with Strings, Complex Numbers, Vectors,
+Matrices and more.
+
+WWW: http://beltoforion.de/article.php?a=muparserx
+
