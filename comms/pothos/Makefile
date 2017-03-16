@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	pothos
-PORTVERSION=	0.3.3
+PORTVERSION=	0.4.2
 #DISTVERSIONPREFIX=	pothos-
 CATEGORIES=	comms
 
@@ -11,10 +11,10 @@ COMMENT=	Framework for creating topologies of interconnected processing \
 
 LICENSE=	BSL
 
-LIB_DEPENDS=	libPocoJSON.so:devel/poco-devel \
-	libPocoUtil.so:devel/poco-devel \
-	libPocoXML.so:devel/poco-devel \
-	libPocoNet.so:devel/poco-devel \
+LIB_DEPENDS=	libPocoJSON.so:devel/poco \
+	libPocoUtil.so:devel/poco \
+	libPocoXML.so:devel/poco \
+	libPocoNet.so:devel/poco \
 	libqwt6.so:x11-toolkits/qwt6-qt5 \
 	libmuparserx.so:math/muparserx \
 	libportaudio.so:audio/portaudio \
@@ -22,16 +22,16 @@ LIB_DEPENDS=	libPocoJSON.so:devel/poco-devel \
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	pothosware
-GH_TAGNAME=	7ca5f18
-GH_TUPLE=	pothosware:pothos-audio:be1bb2d:audio \
-	pothosware:pothos-blocks:2ab6519:blocks \
-	pothosware:pothos-comms:d99af20:comms \
-	pothosware:pothos-gui:50a2675:gui \
-	pothosware:pothos-plotters:7d31eb3:plotters \
-	pothosware:pothos-python:1845189:python \
-	pothosware:pothos-sdr:61620e9:sdr \
+GH_TAGNAME=	932b6da
+GH_TUPLE=	pothosware:pothos-audio:937a56e:audio \
+	pothosware:pothos-blocks:979790a:blocks \
+	pothosware:pothos-comms:4699d8f:comms \
+	pothosware:pothos-gui:ccda93b:gui \
+	pothosware:pothos-plotters:0e50914:plotters \
+	pothosware:pothos-python:86ead8b:python \
+	pothosware:pothos-sdr:f8dab51:sdr \
 	pothosware:pothos-serialization:c59130f:serialization \
-	pothosware:pothos-widgets:b27842a:widgets \
+	pothosware:pothos-widgets:4a0a52d:widgets \
 
 post-extract:
 	@${RM} -rf ${WRKSRC}/audio
