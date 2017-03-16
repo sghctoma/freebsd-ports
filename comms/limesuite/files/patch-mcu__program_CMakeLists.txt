@@ -1,0 +1,10 @@
+--- mcu_program/CMakeLists.txt.orig	2017-03-16 14:17:49 UTC
++++ mcu_program/CMakeLists.txt
+@@ -38,6 +38,7 @@ include_directories(../src/ConnectionRegistry)
+ include_directories(../src/ConnectionSTREAM)
+ include_directories(../src/protocols)
+ include_directories(common_src)
++link_directories(/usr/local/lib)
+ 
+ add_executable(MCU_TestBench ${HOST_SOURCES})
+ if(WIN32)

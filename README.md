@@ -87,3 +87,12 @@ The Soapy RTL-SDR project provides a plugin module to use the RTL-SDR dongle
 within the SoapySDR API and software that supports SoapySDR.
 
 WWW: https://github.com/pothosware/SoapyRTLSDR/wiki
+
+comms/limesuite
+---------------
+
+The Lime Suite application software provides drivers and SDR application
+support for the LMS7002M RFIC, and hardware like the LimeSDR, NovenaRF7,
+and others. Read more about Lime Suite on the official project page.
+
+WWW: https://myriadrf.org/projects/lime-suite/

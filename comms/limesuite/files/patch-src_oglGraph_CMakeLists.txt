@@ -1,0 +1,10 @@
+--- src/oglGraph/CMakeLists.txt.orig	2017-03-16 14:17:57 UTC
++++ src/oglGraph/CMakeLists.txt
+@@ -15,6 +15,7 @@ endif()
+ ADD_DEFINITIONS(-DGLEW_STATIC)
+ add_library(oglGraph STATIC ${oglGraph_src_files})
+ target_include_directories(oglGraph PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
++target_include_directories(oglGraph SYSTEM PUBLIC "/usr/local/include/")
+ 
+ if (APPLE)
+ 	set(GL_LIBS "-framework OpenGL" "-framework GLUT")

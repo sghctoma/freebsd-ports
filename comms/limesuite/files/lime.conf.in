@@ -1,0 +1,77 @@
+notify 100 {
+	match "system"	"USB";
+	match "subsystem" "DEVICE";
+	match "type"	"ATTACH";
+	match "vendor"	"0x04b4";
+	match "product"	"0x8613";
+	action "ln -s /dev/$cdev /dev/stream-$cdev";
+	action "chmod 0660 /dev/stream-$cdev";
+};
+
+notify 100 {
+	match "system"	"USB";
+	match "subsystem" "DEVICE";
+	match "type"	"DETACH";
+	match "vendor"	"0x04b4";
+	match "product"	"0x8613";
+	action "rm /dev/stream-$cdev";
+};
+
+notify 100 {
+	match "system"	"USB";
+	match "subsystem" "DEVICE";
+	match "type"	"ATTACH";
+	match "vendor"	"0x04b4";
+	match "product"	"0x00f1";
+	action "ln -s /dev/$cdev /dev/stream-$cdev";
+	action "chmod 0660 /dev/stream-$cdev";
+};
+
+notify 100 {
+	match "system"	"USB";
+	match "subsystem" "DEVICE";
+	match "type"	"DETACH";
+	match "vendor"	"0x04b4";
+	match "product"	"0x00f1";
+	action "rm /dev/stream-$cdev";
+};
+
+notify 100 {
+	match "system"	"USB";
+	match "subsystem" "DEVICE";
+	match "type"	"ATTACH";
+	match "vendor"	"0x0403";
+	match "product"	"0x601f";
+	action "ln -s /dev/$cdev /dev/stream-$cdev";
+	action "chmod 0660 /dev/stream-$cdev";
+};
+
+notify 100 {
+	match "system"	"USB";
+	match "subsystem" "DEVICE";
+	match "type"	"DETACH";
+	match "vendor"	"0x0403";
+	match "product"	"0x601f";
+	action "rm /dev/stream-$cdev";
+};
+
+notify 100 {
+	match "system"	"USB";
+	match "subsystem" "DEVICE";
+	match "type"	"ATTACH";
+	match "vendor"	"0x1d50";
+	match "product"	"0x6108";
+	action "ln -s /dev/$cdev /dev/stream-$cdev";
+	action "chmod 0660 /dev/stream-$cdev";
+};
+
+notify 100 {
+	match "system"	"USB";
+	match "subsystem" "DEVICE";
+	match "type"	"DETACH";
+	match "vendor"	"0x1d50";
+	match "product"	"0x6108";
+	action "rm /dev/stream-$cdev";
+};
+
+
