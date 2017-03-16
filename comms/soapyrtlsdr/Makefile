@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	soapyrtlsdr
-PORTVERSION=	0.2.1
+PORTVERSION=	0.2.2
 DISTVERSIONPREFIX=	soapy-rtlsdr-
 CATEGORIES=	comms
 
@@ -19,5 +19,7 @@ CXXFLAGS+=	-stdlib=libc++ \
 	-std=c++11 \
 	-Wno-c++11-extensions \
 	-Wno-inconsistent-missing-override
+
+PLIST_FILES=	lib/SoapySDR/modules0.5-2/librtlsdrSupport.so
 
 .include <bsd.port.mk>
