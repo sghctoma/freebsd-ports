@@ -25,23 +25,23 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	swaywm
 GH_PROJECT=	wlroots
 
-OPTIONS_DEFINE=	XWAYLAND X11_BACKEND ROOTSTON EXAMPLES
-OPTIONS_DEFAULT=	XWAYLAND X11_BACKEND ROOTSTON EXAMPLES
+OPTIONS_DEFINE=	XWAYLAND X11_BACKEND
+OPTIONS_DEFAULT=	XWAYLAND X11_BACKEND
 
-#XWAYLAND_MESON_TRUE=	xwayland
-#X11_BACKEND_MESON_TRUE=	x11_backend
-ROOTSTON_MESON_TRUE=	rootston
-EXAMPLES_MESON_TRUE=	examples
+XWAYLAND_MESON_ON=	-Dxwayland=enabled
+XWAYLAND_MESON_OFF=	-Dxwayland=disabled
+X11_BACKEND_MESON_ON=	-Dx11_backend=enabled
+X11_BACKEND_MESON_OFF=	-Dx11_backend=disabled
 
-#XWAYLAND_DESC=	Enable support X11 applications
-#X11_BACKEND_DESC=	Enable X11 backend
-ROOTSTON_DESC=	Build the rootston example compositor
-EXAMPLES_DESC=	Build example applications
+XWAYLAND_DESC=	Enable support X11 applications
+X11_BACKEND_DESC=	Enable X11 backend
 
 MESON_ARGS+= \
 	-Dlibcap=disabled \
 	-Dlogind=disabled \
-	-Dxcb-errors=disabled
+	-Dxcb-errors=disabled \
+	-Drootston=false \
+	-Dexamples=false
 
 USE_XORG=	pixman x11 xcb
 USE_GL=     egl gbm glesv2
