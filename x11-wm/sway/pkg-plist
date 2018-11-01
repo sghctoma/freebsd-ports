@@ -3,7 +3,7 @@
 bin/swaybar
 bin/swaybg
 bin/swayidle
-@(,,4755) bin/swaylock
+%%SUID%%@(,,4755) bin/swaylock
 bin/swaymsg
 bin/swaynag
 etc/pam.d/swaylock

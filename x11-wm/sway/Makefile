@@ -27,8 +27,21 @@ GH_ACCOUNT=	swaywm
 GH_PROJECT=	sway
 
 OPTIONS_SUB=	yes
-OPTIONS_DEFINE=	SUID
-OPTIONS_DEFAULT=	SUID
-SUID_DESC=	Install sway binary with setuid bit set
+OPTIONS_DEFINE=	SUID WALLPAPER ZSH_COMPLETIONS BASH_COMPLETIONS \
+				FISH_COMPLETIONS XWAYLAND
+OPTIONS_DEFAULT=	SUID WALLPAPER XWAYLAND
+
+WALLPAPER_MESON_TRUE=	default-wallpaper
+ZSH_COMPLETIONS_MESON_TRUE=	zsh-completions
+BASH_COMPLETIONS_MESON_TRUE=	bash-completions
+FISH_COMPLETIONS_MESON_TRUE=	fish-completions
+XWAYLAND_MESON_TRUE=	enable-xwayland
+
+SUID_DESC=	Install sway and swaylock binaries with setuid bit set
+WALLPAPER_DESC=	Install the default wallpaper
+ZSH_COMPLETIONS_DESC=	Install zsh shell completions
+BASH_COMPLETIONS_DESC=	Install bash shell completions
+FISH_COMPLETIONS_DESC=	Install fish shell completions
+XWAYLAND_DESC=	Enable support for X11 applications
 
 .include <bsd.port.mk>
