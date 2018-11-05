@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	wlroots
-PORTVERSION=	0.1
+PORTVERSION=	0.1.0
 CATEGORIES=	x11-toolkits wayland
 
 MAINTAINER=	sghctoma@gmail.com
@@ -22,8 +22,9 @@ LIB_DEPENDS=	libwayland-server.so:graphics/wayland \
 USES=	meson ninja
 
 USE_GITHUB=	yes
-GH_ACCOUNT=	swaywm
+GH_ACCOUNT=	sghctoma
 GH_PROJECT=	wlroots
+GH_TAGNAME=	bef882a1
 
 OPTIONS_DEFINE=	XWAYLAND X11_BACKEND
 OPTIONS_DEFAULT=	XWAYLAND X11_BACKEND
