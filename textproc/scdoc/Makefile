@@ -2,7 +2,7 @@
 
 PORTNAME=	scdoc
 PORTVERSION=	1.5.2
-CATEGORIES=	graphics
+CATEGORIES=	textproc
 MASTER_SITES=	https://git.sr.ht/~sircmpwn/scdoc/archive/
 DISTNAME=	${PORTVERSION}
 
