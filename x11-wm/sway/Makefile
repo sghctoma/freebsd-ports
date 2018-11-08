@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	sway
-PORTVERSION=	1.0.6
+DISTVERSION=	1.0-beta.1
 CATEGORIES=	x11-wm wayland
 
 MAINTAINER=	sghctoma@gmail.com
@@ -10,7 +10,8 @@ COMMENT=	i3-compatible Wayland compositor
 LICENSE=	MIT
 LICENSE_FILES=	${WRKSRC}/LICENSE
 
-BUILD_DEPENDS=	wayland-protocols>=0:graphics/wayland-protocols
+BUILD_DEPENDS=	wayland-protocols>=0:graphics/wayland-protocols \
+	scdoc:textproc/scdoc
 LIB_DEPENDS=	libjson-c.so:devel/json-c \
 	libpcre.so:devel/pcre \
 	libwlroots.so:x11-toolkits/wlroots \
@@ -25,7 +26,7 @@ USE_LDCONFIG=	yes
 USE_GITHUB=	yes
 GH_ACCOUNT=	sghctoma
 GH_PROJECT=	sway
-GH_TAGNAME=	40cd651a
+GH_TAGNAME=	cce0d63e
 
 OPTIONS_SUB=	yes
 OPTIONS_DEFINE=	SUID WALLPAPER ZSH_COMPLETIONS BASH_COMPLETIONS \
