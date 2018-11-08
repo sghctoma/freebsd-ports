@@ -10,7 +10,8 @@ COMMENT=	i3-compatible Wayland compositor
 LICENSE=	MIT
 LICENSE_FILES=	${WRKSRC}/LICENSE
 
-BUILD_DEPENDS=	wayland-protocols>=0:graphics/wayland-protocols
+BUILD_DEPENDS=	wayland-protocols>=0:graphics/wayland-protocols \
+	scdoc:textproc/scdoc
 LIB_DEPENDS=	libjson-c.so:devel/json-c \
 	libpcre.so:devel/pcre \
 	libwlroots.so:x11-toolkits/wlroots \
