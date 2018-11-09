@@ -12,6 +12,8 @@ COMMENT=	Simple man page generator written for POSIX systems written in C99
 LICENSE=	MIT
 LICENSE_FILES=	${WRKSRC}/COPYING
 
+USE_HARDENING=	pie:off
+
 USES=	gmake
 
 WRKSRC=	${WRKDIR}/${PORTNAME}-${PORTVERSION}
