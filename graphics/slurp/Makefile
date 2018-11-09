@@ -15,7 +15,7 @@ LIB_DEPENDS=	libwayland-client.so:graphics/wayland \
 	libwayland-cursor.so:graphics/wayland \
 	libcairo.so:graphics/cairo
 
-USES=	meson ninja
+USES=	meson ninja pkgconfig
 
 USE_GITHUB= yes
 GH_ACCOUNT=	emersion
