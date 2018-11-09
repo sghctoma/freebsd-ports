@@ -17,10 +17,9 @@ LIB_DEPENDS=	libjson-c.so:devel/json-c \
 	libwlroots.so:x11-toolkits/wlroots \
 	libpango-1.0.so:x11-toolkits/pango
 
-USES=	meson ninja
+USES=	meson ninja pkgconfig
 USE_XORG=	pixman x11 xcb
 USE_GL=     egl gbm glesv2
-USE_HARDENING=	pie relro
 USE_LDCONFIG=	yes
 
 USE_GITHUB=	yes

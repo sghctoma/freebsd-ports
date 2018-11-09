@@ -22,7 +22,7 @@ XWAYLAND_LIB_DEPENDS=	libxcb.so:x11/libxcb
 X11_BACKEND_DEPENDS=	libX11.so:x11/libX11 libxcb.so:x11/libxcb
 XCB_ICCCM_DEPENDS=		libxcb-icccm.so:x11/xcb-util-wm
 
-USES=			meson ninja
+USES=			meson ninja pkgconfig
 
 USE_GITHUB=		yes
 GH_ACCOUNT=		sghctoma
@@ -31,7 +31,6 @@ GH_TAGNAME=		1941424
 
 USE_XORG=		pixman x11 xcb
 USE_GL=			egl gbm glesv2
-USE_HARDENING=	pie relro
 USE_LDCONFIG=	yes
 
 PORTEXAMPLES=	*
