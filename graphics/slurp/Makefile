@@ -10,7 +10,8 @@ COMMENT=	Select a region in a Wayland compositor
 LICENSE=	MIT
 LICENSE_FILES=	${WRKSRC}/LICENSE
 
-BUILD_DEPENDS=	wayland-protocols>=1.14:graphics/wayland-protocols
+BUILD_DEPENDS=	wayland-protocols>=1.14:graphics/wayland-protocols \
+	scdoc:textproc/scdoc
 LIB_DEPENDS=	libwayland-client.so:graphics/wayland \
 	libwayland-cursor.so:graphics/wayland \
 	libcairo.so:graphics/cairo
