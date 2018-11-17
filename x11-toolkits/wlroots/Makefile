@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	wlroots
-PORTVERSION=	0.1
+PORTVERSION=	0.1.20181113
 CATEGORIES=	x11-toolkits wayland
 
 MAINTAINER=	sghctoma@gmail.com
@@ -16,20 +16,16 @@ LIB_DEPENDS=	libwayland-server.so:graphics/wayland \
 	libwayland-egl.so:graphics/wayland \
 	libinput.so:x11/libinput \
 	libxkbcommon.so:x11/libxkbcommon \
-	libudev.so:devel/libudev-devd \
-
-XWAYLAND_LIB_DEPENDS=	libxcb.so:x11/libxcb
-X11_BACKEND_DEPENDS=	libX11.so:x11/libX11 libxcb.so:x11/libxcb
-XCB_ICCCM_DEPENDS=		libxcb-icccm.so:x11/xcb-util-wm
+	libudev.so:devel/libudev-devd
 
 USES=			meson ninja pkgconfig
 
 USE_GITHUB=		yes
 GH_ACCOUNT=		sghctoma
 GH_PROJECT=		wlroots
-GH_TAGNAME=		1941424
+GH_TAGNAME=	48a73bbb
 
-USE_XORG=		pixman x11 xcb
+USE_XORG=		pixman
 USE_GL=			egl gbm glesv2
 USE_LDCONFIG=	yes
 
@@ -44,6 +40,10 @@ XWAYLAND_DESC=		Enable support X11 applications
 X11_BACKEND_DESC=	Enable X11 backend
 XCB_ICCCM_DESC=		Use xcb-icccm util library
 ROOTSTON_DESC=		Install the rootston example compositor
+
+XWAYLAND_LIB_DEPENDS=		libxcb.so:x11/libxcb
+X11_BACKEND_LIB_DEPENDS=	libX11.so:x11/libX11 libxcb.so:x11/libxcb
+XCB_ICCCM_LIB_DEPENDS=		libxcb-icccm.so:x11/xcb-util-wm
 
 XWAYLAND_MESON_ON=		-Dxwayland=enabled
 XWAYLAND_MESON_OFF=		-Dxwayland=disabled
