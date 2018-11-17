@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	sway
-DISTVERSION=	1.0-beta.1
+PORTVERSION=	1.0.20181115
 CATEGORIES=	x11-wm wayland
 
 MAINTAINER=	sghctoma@gmail.com
@@ -11,21 +11,24 @@ LICENSE=	MIT
 LICENSE_FILES=	${WRKSRC}/LICENSE
 
 BUILD_DEPENDS=	wayland-protocols>=0:graphics/wayland-protocols \
+	${LOCALBASE}/include/linux/input-event-codes.h:devel/evdev-proto \
+	git:devel/git \
 	scdoc:textproc/scdoc
-LIB_DEPENDS=	libjson-c.so:devel/json-c \
+LIB_DEPENDS=	libgdk_pixbuf-2.0.so:graphics/gdk-pixbuf2 \
+	libjson-c.so:devel/json-c \
 	libpcre.so:devel/pcre \
 	libwlroots.so:x11-toolkits/wlroots \
 	libpango-1.0.so:x11-toolkits/pango
 
 USES=	meson ninja pkgconfig
-USE_XORG=	pixman x11 xcb
+USE_XORG=	pixman
 USE_GL=     egl gbm glesv2
 USE_LDCONFIG=	yes
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	sghctoma
 GH_PROJECT=	sway
-GH_TAGNAME=	cce0d63e
+GH_TAGNAME= a2bd421c
 
 OPTIONS_SUB=	yes
 OPTIONS_DEFINE=	SUID WALLPAPER ZSH_COMPLETIONS BASH_COMPLETIONS \
@@ -44,5 +47,7 @@ ZSH_COMPLETIONS_DESC=	Install zsh shell completions
 BASH_COMPLETIONS_DESC=	Install bash shell completions
 FISH_COMPLETIONS_DESC=	Install fish shell completions
 XWAYLAND_DESC=	Enable support for X11 applications
+
+XWAYLAND_LIB_DEPENDS=		libxcb.so:x11/libxcb
 
 .include <bsd.port.mk>
