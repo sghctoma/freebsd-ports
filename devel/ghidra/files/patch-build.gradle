@@ -1,0 +1,61 @@
+--- build.gradle.orig	2019-04-03 17:38:23 UTC
++++ build.gradle
+@@ -38,6 +38,17 @@ allprojects {
+ }
+ 
+ /*********************************************************************************
++ *  Set Gradle repositories
++ *********************************************************************************/
++allprojects {
++	repositories {
++		mavenCentral()
++		jcenter()
++		flatDir name:'flat', dirs:["FLATREPO_PATH_PLACEHOLDER"]
++	}
++}
++
++/*********************************************************************************
+  *  load properties from Ghidra/application.properties file
+  *********************************************************************************/
+ 
+@@ -58,7 +69,7 @@ apply from: "gradleScripts/setupJacoco.gradle" // Has 
+  *		project.OS_NAMES.each {...}
+  ****************************************************************************/
+ 
+-project.ext.set("OS_NAMES", ["osx64", "win32", "win64", "linux64"])
++project.ext.set("OS_NAMES", ["osx64", "win32", "win64", "linux64", "freebsd64"])
+ 
+ /*********************************************************************************
+  * Imports
+@@ -134,6 +145,19 @@ def isWindows(String platformName) {
+ 	}
+ }
+ 
++/*********************************************************************************
++ * Returns true if the platform is a FreeBSD machine.
++ *********************************************************************************/
++def isFreeBSD(String platformName) {
++
++	if (platformName.startsWith("freebsd")) {
++		return true
++	}
++	else {
++		return false
++	}
++}
++
+ /******************************************************************************************
+  *	Helper method that returns a file that is the same relative location in the bin repo
+  *  as the given project is in its repo.
+@@ -278,6 +302,11 @@ String getCurrentPlatformName() {
+ 	else if (osName.startsWith("Mac OS X")) {
+ 		if (isX86_64) {
+ 			return 'osx64'
++		}
++	}
++	else if (osName.startsWith("FreeBSD")) {
++		if (isX86_64) {
++			return 'freebsd64'
+ 		}
+ 	}
+ 	throw new GradleException("Unrecognized current platform -> osName = $osName, archName = $archName")
