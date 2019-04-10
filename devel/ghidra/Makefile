@@ -80,7 +80,7 @@ post-patch:
 
 	# Need to remove .orig and .bak files, because they are not in the
 	# certification.manifest files, and cause build failure.
-	${FIND} ${WRKSRC} \( -name "*.orig" -or -name "*.bak" \) -exec ${RM} {} \;
+	@${FIND} ${WRKSRC} \( -name "*.orig" -or -name "*.bak" \) -exec ${RM} {} \;
 
 post-patch-JDK11-on:
 	@${ECHO_CMD} "org.gradle.java.home=${LOCALBASE}/openjdk11" > ${WRKSRC}/gradle.properties
