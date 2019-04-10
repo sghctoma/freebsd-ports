@@ -25,13 +25,12 @@ ONLY_FOR_ARCHS= amd64
 EXTRACT_DEPENDS= ${UNZIP_CMD}:archivers/unzip
 BUILD_DEPENDS=	gradle>=5.0:devel/gradle \
 	bash:shells/bash \
-	bison:devel/bison \
 	flex:textproc/flex \
 	fop:textproc/fop \
 	${LOCALBASE}/share/xsl/docbook/html/docbook.xsl:textproc/docbook-xsl
 RUN_DEPENDS=	bash:shells/bash
 
-USES=	shebangfix
+USES=	bison shebangfix
 
 OPTIONS_RADIO=	JDK
 OPTIONS_RADIO_JDK=	JDK11 JDK12
