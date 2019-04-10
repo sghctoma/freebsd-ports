@@ -29,6 +29,7 @@ BUILD_DEPENDS=	gradle>=5.0:devel/gradle \
 	flex:textproc/flex \
 	fop:textproc/fop \
 	${LOCALBASE}/share/xsl/docbook/html/docbook.xsl:textproc/docbook-xsl
+RUN_DEPENDS=	bash:shells/bash
 
 USES=	shebangfix
 
