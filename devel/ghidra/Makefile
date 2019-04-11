@@ -15,7 +15,7 @@ DIST_SUBDIR=	${PORTNAME}
 EXTRACT_ONLY=	${DISTNAME}${EXTRACT_SUFX}
 
 MAINTAINER=	sghctoma@gmail.com
-COMMENT=	Software reverse engineering (SRE) suite of tools
+COMMENT=	Software reverse engineering (SRE) framework
 
 LICENSE=		APACHE20
 LICENSE_FILE=	${WRKSRC}/LICENSE
