@@ -55,22 +55,16 @@ GRADLE_ENV=	GRADLE_USER_HOME=${WRKDIR}/gradle-home CC=${CC} CXX=${CXX}
 GRADLE_RUN=	${SETENV} ${GRADLE_ENV} gradle --no-daemon
 
 post-extract:
-	# Get dependencies for Ghidra
 	@${MKDIR} ${WRKDIR}/flatrepo
 	@${CP} ${DISTDIR}/${DIST_SUBDIR}/AXMLPrinter2.jar ${WRKDIR}/flatrepo
 	@${UNZIP_CMD} -j -d ${WRKDIR}/flatrepo ${DISTDIR}/${DIST_SUBDIR}/hfsexplorer-0_21-bin.zip \
 		lib/csframework.jar lib/hfsx_dmglib.jar lib/hfsx.jar lib/iharder-base64.jar
 	@${UNZIP_CMD} -j -d ${WRKDIR}/flatrepo ${DISTDIR}/${DIST_SUBDIR}/dex-tools-2.0.zip "dex2jar-2.0/lib/dex-*.jar"
-
-	# Get dependency for Ghidra server
 	@${MKDIR} ${WRKDIR}/ghidra.bin/Ghidra/Features/GhidraServer/
 	@${CP} ${DISTDIR}/${DIST_SUBDIR}/yajsw-stable-12.12.zip ${WRKDIR}/ghidra.bin/Ghidra/Features/GhidraServer/
 
 post-patch:
-	# Set flatrepo path
 	@${REINPLACE_CMD} -e "s|FLATREPO_PATH_PLACEHOLDER|${WRKDIR}/flatrepo|" ${WRKSRC}/build.gradle
-
-	# Patch include paths in .xsl files
 	@${REINPLACE_CMD} -e "s|/usr/share/sgml/docbook/xsl-stylesheets/html/docbook.xsl|${LOCALBASE}/share/xsl/docbook/html/docbook.xsl|g" \
 		${WRKSRC}/Ghidra/Features/Decompiler/src/main/doc/main_html.xsl
 	@${REINPLACE_CMD} -e "s|/usr/share/sgml/docbook/xsl-stylesheets/html/chunk.xsl|${LOCALBASE}/share/xsl/docbook/html/chunk.xsl|g" \
@@ -97,6 +91,7 @@ do-install:
 	@${UNZIP_CMD} -d ${STAGEDIR} ${WRKSRC}/build/dist/*.zip
 	@${MV} ${STAGEDIR}/ghidra* ${STAGEDIR}${DATADIR}
 	@${RLN} ${STAGEDIR}/${DATADIR}/ghidraRun ${STAGEDIR}${PREFIX}/bin/ghidra
+	@${RLN} ${STAGEDIR}/${DATADIR}/server/ghidraSvr ${STAGEDIR}${PREFIX}/bin/ghidra-server
 	@${STRIP_CMD} ${STAGEDIR}/${DATADIR}/GPL/DemanglerGnu/os/freebsd64/demangler_gnu
 	@${STRIP_CMD} ${STAGEDIR}/${DATADIR}/Ghidra/Features/Decompiler/os/freebsd64/decompile
 	@${STRIP_CMD} ${STAGEDIR}/${DATADIR}/Ghidra/Features/Decompiler/os/freebsd64/sleigh
