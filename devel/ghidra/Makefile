@@ -35,6 +35,7 @@ USES=	bison shebangfix
 OPTIONS_RADIO=	JDK
 OPTIONS_RADIO_JDK=	JDK11 JDK12
 OPTIONS_DEFAULT=	JDK11
+
 JDK11_BUILD_DEPENDS=	${LOCALBASE}/openjdk11/bin/java:java/openjdk11
 JDK11_RUN_DEPENDS=		${LOCALBASE}/openjdk11/bin/java:java/openjdk11
 JDK12_BUILD_DEPENDS=	${LOCALBASE}/openjdk12/bin/java:java/openjdk12
@@ -46,9 +47,9 @@ SHEBANG_FILES=	Ghidra/RuntimeScripts/Linux/* \
 
 USE_GITHUB=		yes
 
-GH_ACCOUNT=		NationalSecurityAgency
-GH_PROJECT=		ghidra
-GH_TAGNAME=		Ghidra_${PORTVERSION}_build
+GH_ACCOUNT=	NationalSecurityAgency
+GH_PROJECT=	ghidra
+GH_TAGNAME=	Ghidra_${PORTVERSION}_build
 GH_TUPLE=	NationalSecurityAgency:ghidra:Ghidra_${PORTVERSION}_build
 
 GRADLE_ENV=	GRADLE_USER_HOME=${WRKDIR}/gradle-home CC=${CC} CXX=${CXX}
@@ -65,12 +66,9 @@ post-extract:
 
 post-patch:
 	@${REINPLACE_CMD} -e "s|FLATREPO_PATH_PLACEHOLDER|${WRKDIR}/flatrepo|" ${WRKSRC}/build.gradle
-	@${REINPLACE_CMD} -e "s|/usr/share/sgml/docbook/xsl-stylesheets/html/docbook.xsl|${LOCALBASE}/share/xsl/docbook/html/docbook.xsl|g" \
-		${WRKSRC}/Ghidra/Features/Decompiler/src/main/doc/main_html.xsl
-	@${REINPLACE_CMD} -e "s|/usr/share/sgml/docbook/xsl-stylesheets/html/chunk.xsl|${LOCALBASE}/share/xsl/docbook/html/chunk.xsl|g" \
-		${WRKSRC}/Ghidra/Features/Decompiler/src/main/doc/*_html.xsl ${WRKSRC}/Ghidra/Features/FunctionID/src/main/doc/fid_html.xsl
-	@${REINPLACE_CMD} -e "s|/usr/share/sgml/docbook/xsl-stylesheets/fo/docbook.xsl|${LOCALBASE}/share/xsl/docbook/fo/docbook.xsl|g" \
-		${WRKSRC}/Ghidra/Features/Decompiler/src/main/doc/*_html.xsl ${WRKSRC}/Ghidra/Features/FunctionID/src/main/doc/fid_pdf.xsl
+	@${REINPLACE_CMD} -e "s|/usr/share/sgml/docbook/xsl-stylesheets|${LOCALBASE}/share/xsl/docbook/|g" \
+		${WRKSRC}/Ghidra/Features/Decompiler/src/main/doc/*.xsl \
+		${WRKSRC}/Ghidra/Features/FunctionID/src/main/doc/*.xsl
 
 	# Need to remove .orig and .bak files, because they are not in the
 	# certification.manifest files, and cause build failure.
