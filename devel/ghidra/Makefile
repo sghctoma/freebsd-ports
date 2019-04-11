@@ -45,8 +45,7 @@ SHEBANG_FILES=	Ghidra/RuntimeScripts/Linux/* \
 	Ghidra/RuntimeScripts/Linux/support/* \
 	Ghidra/RuntimeScripts/Linux/server/*
 
-USE_GITHUB=		yes
-
+USE_GITHUB=	yes
 GH_ACCOUNT=	NationalSecurityAgency
 GH_PROJECT=	ghidra
 GH_TAGNAME=	Ghidra_${PORTVERSION}_build
@@ -70,8 +69,8 @@ post-patch:
 		${WRKSRC}/Ghidra/Features/Decompiler/src/main/doc/*.xsl \
 		${WRKSRC}/Ghidra/Features/FunctionID/src/main/doc/*.xsl
 
-	# Need to remove .orig and .bak files, because they are not in the
-	# certification.manifest files, and cause build failure.
+	# Need to remove .orig and .bak files. They cause build failure because they
+	# are not listed in the certification.manifest files.
 	@${FIND} ${WRKSRC} \( -name "*.orig" -or -name "*.bak" \) -exec ${RM} {} \;
 
 post-patch-JDK11-on:
