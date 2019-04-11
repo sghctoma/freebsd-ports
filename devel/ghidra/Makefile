@@ -64,14 +64,9 @@ post-extract:
 	@${CP} ${DISTDIR}/${DIST_SUBDIR}/yajsw-stable-12.12.zip ${WRKDIR}/ghidra.bin/Ghidra/Features/GhidraServer/
 
 post-patch:
-	@${REINPLACE_CMD} -e "s|FLATREPO_PATH_PLACEHOLDER|${WRKDIR}/flatrepo|" ${WRKSRC}/build.gradle
 	@${REINPLACE_CMD} -e "s|/usr/share/sgml/docbook/xsl-stylesheets|${LOCALBASE}/share/xsl/docbook/|g" \
 		${WRKSRC}/Ghidra/Features/Decompiler/src/main/doc/*.xsl \
 		${WRKSRC}/Ghidra/Features/FunctionID/src/main/doc/*.xsl
-
-	# Need to remove .orig and .bak files. They cause build failure because they
-	# are not listed in the certification.manifest files.
-	@${FIND} ${WRKSRC} \( -name "*.orig" -or -name "*.bak" \) -exec ${RM} {} \;
 
 post-patch-JDK11-on:
 	@${ECHO_CMD} "org.gradle.java.home=${LOCALBASE}/openjdk11" > ${WRKSRC}/gradle.properties
