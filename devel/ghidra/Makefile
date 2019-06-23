@@ -54,10 +54,6 @@ GH_TUPLE=	NationalSecurityAgency:ghidra:Ghidra_${PORTVERSION}_build
 GRADLE_ENV=	GRADLE_USER_HOME=${WRKDIR}/gradle-home CC=${CC} CXX=${CXX}
 GRADLE_RUN=	${SETENV} ${GRADLE_ENV} gradle --no-daemon
 
-post-fetch:
-	@${MKDIR} ${WRKDIR}/gradle-home
-	@${GRADLE_RUN} --refresh-dependencies
-
 post-extract:
 	@${MKDIR} ${WRKDIR}/flatrepo
 	@${CP} ${DISTDIR}/${DIST_SUBDIR}/AXMLPrinter2.jar ${WRKDIR}/flatrepo
@@ -79,6 +75,7 @@ post-patch-JDK12-on:
 	@${ECHO_CMD} "org.gradle.java.home=${LOCALBASE}/openjdk12" > ${WRKSRC}/gradle.properties
 
 do-build:
+	@${MKDIR} ${WRKDIR}/gradle-home
 	cd ${WRKSRC} && ${GRADLE_RUN} yajswDevUnpack
 	cd ${WRKSRC} && ${GRADLE_RUN} buildGhidra
 
