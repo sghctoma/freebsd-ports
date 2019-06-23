@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=		ghidra
-PORTVERSION=	9.0.2
+PORTVERSION=	9.0.4
 CATEGORIES=		devel
 MASTER_SITES=	SF/yajsw/yajsw/yajsw-stable-12.12/:yajsw \
 	SF/catacombae/HFSExplorer/0.21/:hfsexplorer \
