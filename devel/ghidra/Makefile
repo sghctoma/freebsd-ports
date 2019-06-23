@@ -2,7 +2,7 @@
 
 PORTNAME=		ghidra
 DISTVERSIONPREFIX=	Ghidra_
-PORTVERSION=	9.0.4
+DISTVERSION=	9.0.4
 DISTVERSIONSUFFIX=	_build
 CATEGORIES=		devel security
 MASTER_SITES=	SF/yajsw/yajsw/yajsw-stable-12.12/:yajsw \
