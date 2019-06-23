@@ -1,9 +1,9 @@
 # $FreeBSD$
 
 PORTNAME=		ghidra
-DISTVERSIONPREFIX= Ghidra_
+DISTVERSIONPREFIX=	Ghidra_
 PORTVERSION=	9.0.4
-DISTVERSIONSUFFIX= _build
+DISTVERSIONSUFFIX=	_build
 CATEGORIES=		devel security
 MASTER_SITES=	SF/yajsw/yajsw/yajsw-stable-12.12/:yajsw \
 	SF/catacombae/HFSExplorer/0.21/:hfsexplorer \
@@ -53,6 +53,26 @@ GH_ACCOUNT=	NationalSecurityAgency
 GRADLE_ENV=	GRADLE_USER_HOME=${WRKDIR}/gradle-home CC=${CC} CXX=${CXX}
 GRADLE_RUN=	${SETENV} ${GRADLE_ENV} gradle --no-daemon
 
+# to rebuild the deps archive:
+#   1. set DEV_UPDATE_MODE=yes
+#   2. make makesum build
+#   3. upload the *-deps archive
+#   4. set DEV_UPDATE_MODE=no
+#   5. make clean makesum
+
+DEV_UPDATE_MODE=	no
+
+.if (${DEV_UPDATE_MODE} == "yes")
+post-build:
+	@cd ${WRKDIR} && ${TAR} czf ${DISTDIR}/${DIST_SUBDIR}/${PORTNAME}-${DISTVERSION}-deps${EXTRACT_SUFX} gradle-home
+	@${ECHO} "(!!!) Please upload the Gradle deps archive: ${DISTDIR}/${DIST_SUBDIR}/${PORTNAME}-${DISTVERSION}-deps${EXTRACT_SUFX}"
+.else
+MASTER_SITES+=	https://github.com/sghctoma/ghidra-deps/raw/master/:gradle
+DISTFILES+=		${PORTNAME}-${DISTVERSION}-deps${EXTRACT_SUFX}:gradle
+EXTRACT_ONLY+=	${PORTNAME}-${DISTVERSION}-deps${EXTRACT_SUFX}
+GRADLE_RUN+=	--offline
+.endif
+
 post-extract:
 	@${MKDIR} ${WRKDIR}/flatrepo
 	@${CP} ${DISTDIR}/${DIST_SUBDIR}/AXMLPrinter2.jar ${WRKDIR}/flatrepo
@@ -74,7 +94,6 @@ post-patch-JDK12-on:
 	@${ECHO_CMD} "org.gradle.java.home=${LOCALBASE}/openjdk12" > ${WRKSRC}/gradle.properties
 
 do-build:
-	@${MKDIR} ${WRKDIR}/gradle-home
 	cd ${WRKSRC} && ${GRADLE_RUN} yajswDevUnpack
 	cd ${WRKSRC} && ${GRADLE_RUN} buildGhidra
 
