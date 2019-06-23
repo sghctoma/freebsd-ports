@@ -2,7 +2,7 @@
 
 PORTNAME=		ghidra
 PORTVERSION=	9.0.4
-CATEGORIES=		devel
+CATEGORIES=		devel security
 MASTER_SITES=	SF/yajsw/yajsw/yajsw-stable-12.12/:yajsw \
 	SF/catacombae/HFSExplorer/0.21/:hfsexplorer \
 	https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/android4me/:axml2printer \
