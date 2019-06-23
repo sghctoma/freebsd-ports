@@ -1,7 +1,9 @@
 # $FreeBSD$
 
 PORTNAME=		ghidra
+DISTVERSIONPREFIX= Ghidra_
 PORTVERSION=	9.0.4
+DISTVERSIONSUFFIX= _build
 CATEGORIES=		devel security
 MASTER_SITES=	SF/yajsw/yajsw/yajsw-stable-12.12/:yajsw \
 	SF/catacombae/HFSExplorer/0.21/:hfsexplorer \
@@ -47,9 +49,6 @@ SHEBANG_FILES=	Ghidra/RuntimeScripts/Linux/* \
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	NationalSecurityAgency
-GH_PROJECT=	ghidra
-GH_TAGNAME=	Ghidra_${PORTVERSION}_build
-GH_TUPLE=	NationalSecurityAgency:ghidra:Ghidra_${PORTVERSION}_build
 
 GRADLE_ENV=	GRADLE_USER_HOME=${WRKDIR}/gradle-home CC=${CC} CXX=${CXX}
 GRADLE_RUN=	${SETENV} ${GRADLE_ENV} gradle --no-daemon
