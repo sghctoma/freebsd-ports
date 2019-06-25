@@ -77,6 +77,7 @@ GRADLE_RUN+=	--offline
 
 post-extract:
 	@${MKDIR} ${WRKDIR}/flatrepo
+	@${MKDIR} ${WRKDIR}/dummy.home
 	@${CP} ${DISTDIR}/${DIST_SUBDIR}/AXMLPrinter2.jar ${WRKDIR}/flatrepo
 	@${UNZIP_CMD} -j -d ${WRKDIR}/flatrepo ${DISTDIR}/${DIST_SUBDIR}/hfsexplorer-0_21-bin.zip \
 		lib/csframework.jar lib/hfsx_dmglib.jar lib/hfsx.jar lib/iharder-base64.jar
