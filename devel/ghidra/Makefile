@@ -50,8 +50,10 @@ SHEBANG_FILES=	Ghidra/RuntimeScripts/Linux/* \
 USE_GITHUB=	yes
 GH_ACCOUNT=	NationalSecurityAgency
 
-GRADLE_ENV=	GRADLE_USER_HOME=${WRKDIR}/gradle-home CC=${CC} CXX=${CXX}
-GRADLE_RUN=	${SETENV} ${GRADLE_ENV} gradle --no-daemon
+GRADLE_HOME_BASE = /tmp	# Gradle cache path must be absolute (see https://github.com/gradle/gradle/issues/1338)
+GRADLE_RUN=	${SETENV} ${MAKE_ENV} gradle \
+			--gradle-user-home ${GRADLE_HOME_BASE}/gradle-${PORTNAME} \
+			--no-daemon
 
 # to rebuild the deps archive:
 #   1. set DEV_UPDATE_MODE=yes
@@ -64,7 +66,7 @@ DEV_UPDATE_MODE=	no
 
 .if (${DEV_UPDATE_MODE} == "yes")
 post-build:
-	@cd ${WRKDIR} && ${TAR} czf ${DISTDIR}/${DIST_SUBDIR}/${PORTNAME}-${DISTVERSION}-deps${EXTRACT_SUFX} gradle-home
+	@cd ${GRADLE_HOME_BASE} && ${TAR} czf ${DISTDIR}/${DIST_SUBDIR}/${PORTNAME}-${DISTVERSION}-deps${EXTRACT_SUFX} gradle-${PORTNAME}
 	@${ECHO} "(!!!) Please upload the Gradle deps archive: ${DISTDIR}/${DIST_SUBDIR}/${PORTNAME}-${DISTVERSION}-deps${EXTRACT_SUFX}"
 .else
 MASTER_SITES+=	https://github.com/sghctoma/ghidra-deps/raw/master/:gradle
@@ -81,6 +83,9 @@ post-extract:
 	@${UNZIP_CMD} -j -d ${WRKDIR}/flatrepo ${DISTDIR}/${DIST_SUBDIR}/dex-tools-2.0.zip "dex2jar-2.0/lib/dex-*.jar"
 	@${MKDIR} ${WRKDIR}/ghidra.bin/Ghidra/Features/GhidraServer/
 	@${CP} ${DISTDIR}/${DIST_SUBDIR}/yajsw-stable-12.12.zip ${WRKDIR}/ghidra.bin/Ghidra/Features/GhidraServer/
+.if (${DEV_UPDATE_MODE} == "no")
+	@${LN} -sf ${WRKDIR}/gradle-${PORTNAME} ${GRADLE_HOME_BASE}
+.endif
 
 post-patch:
 	@${REINPLACE_CMD} -e "s|/usr/share/sgml/docbook/xsl-stylesheets|${LOCALBASE}/share/xsl/docbook/|g" \
@@ -96,6 +101,9 @@ post-patch-JDK12-on:
 do-build:
 	cd ${WRKSRC} && ${GRADLE_RUN} yajswDevUnpack
 	cd ${WRKSRC} && ${GRADLE_RUN} buildGhidra
+
+post-build:
+	@${RM} ${GRADLE_HOME_BASE}/gradle-${PORTNAME}
 
 do-install:
 	@${UNZIP_CMD} -d ${STAGEDIR} ${WRKSRC}/build/dist/*.zip
